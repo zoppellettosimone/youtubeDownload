@@ -1,6 +1,10 @@
 # youtubeDownload
-Program to download videos from youtube
+Program to download videos or audio from youtube.com
 
 TO INSTALL:
 
-    Run "installation.bat"
+    Double click "installation.bat"
+
+TO RUN:
+
+    Double click "youtubeVideosDownloader.bat" or "youtubeAudioDownloader.bat"
