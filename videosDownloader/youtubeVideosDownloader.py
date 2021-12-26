@@ -33,4 +33,7 @@ skipLine = Label(root, text="", background='#4d0000', foreground="white").pack()
 
 Button(root, text="Input", command=download).pack()
 
+#Footer Credits
+footer = Label(root, text="Created by Simone Zoppelletto", background='#4d0000', foreground="white", padx=10, pady=10).pack()
+
 root.mainloop()
