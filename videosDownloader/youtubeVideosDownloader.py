@@ -1,21 +1,34 @@
 from tkinter import *
 from pytube import YouTube
+from pytube import Playlist
 
-def buttonCommand():
-    download()
-    root.destroy()
+def downloadVideos(ys):
+    #Get title name of video
+        titleName = ys.title.replace('.', '').replace(',', '').replace(':', '')
+
+        #Add .mp4 to tile name
+        newTitleName = titleName + ".mp4"
+
+        print("Download Video Start")
+
+        #Download it in Downloads\Videos
+        ys.download('..\Downloads\Videos')
 
 def download():
-    #Get youtube videos with highest resolution
-    yt = YouTube(URL.get())
-    ys = yt.streams.get_highest_resolution()
+    link = URL.get()
+    if(link.startswith("https://www.youtube.com/playlist?list=")):
+        playlist = Playlist(link)
+        print('Number of videos in playlist: %s' % len(playlist.video_urls))
+        for video_url in playlist.video_urls:
+            yt = YouTube(video_url)
+            ys = yt.streams.get_highest_resolution()
+            downloadVideos(ys)
 
-    print("Download Video Start")
-
-    #Download it in Downloads\Videos
-    ys.download('..\Downloads\Video')
-
-    print('Youtube Video Download Complete in "Downloads\Video"')
+    elif(link.startswith("https://www.youtube.com/watch?v=")):
+        #Get youtube videos with highest resolution
+        yt = YouTube(link)
+        ys = yt.streams.get_lowest_resolution()
+        downloadVideos(ys)
 
 #Definition for Tkinter
 root = Tk()

@@ -1,5 +1,6 @@
 from tkinter import *
 from pytube import YouTube
+from pytube import Playlist
 import os
 from pathlib import Path
 from moviepy.editor import *
@@ -8,38 +9,56 @@ def buttonCommand():
     download()
     root.destroy()
 
-def download():
-    #Get youtube videos with highest resolution
-    yt = YouTube(URL.get())
-    #ys = yt.streams.filter(only_audio=True,file_extension='mp4').first()
-    ys = yt.streams.get_lowest_resolution()
-
+def downloadVideos(ys):
     #Get title name of video
-    titleName = ys.title.replace('.', '').replace(',', '').replace(':', ' ')
+        titleName = ys.title.replace('.', '').replace(',', '').replace(':', '')
 
-    #Add .mp4 to tile name
-    newTitleName = titleName + ".mp4"
+        #Add .mp4 to tile name
+        newTitleName = titleName + ".mp4"
 
-    print("Download Audio Start")
+        print("Download Audio Start")
 
-    #Download it in Downloads\Videos
-    ys.download('..\Downloads\Audio')
+        #Download it in Downloads\Videos
+        ys.download()
 
-    #Change the current directory
-    cwd = os.getcwd()
-    os.chdir(cwd + '\..\Downloads\Audio')
+        #Trasform mp4 file into mp3 file
+        videoclip = VideoFileClip(newTitleName)
+        audioclip = videoclip.audio
+        audioclip.write_audiofile(titleName + '.mp3')
+        audioclip.close()
+        videoclip.close()
 
-    #Trasform mp4 file into mp3 file
-    videoclip = VideoFileClip(newTitleName)
-    audioclip = videoclip.audio
-    audioclip.write_audiofile(titleName + '.mp3')
-    audioclip.close()
-    videoclip.close()
+        #Remove .mp4 original file
+        os.remove(newTitleName) 
 
-    #Remove .mp4 original file
-    os.remove(newTitleName) 
+        print('Youtube Audio Download Complete in "Downloads\Audio"')
 
-    print('Youtube Audio Download Complete in "Downloads\Audio"')
+def download():
+    global i
+    i = i + 1
+    
+    link = URL.get()
+
+    if(i==1):
+        #Change the current directory
+        cwd = os.getcwd()
+        os.chdir(cwd + '\..\Downloads\Audio')
+    
+    if(link.startswith("https://www.youtube.com/playlist?list=")):
+        playlist = Playlist(link)
+        print('Number of videos in playlist: %s' % len(playlist.video_urls))
+        for i in range(0, len(playlist.video_urls), 1):
+            yt = YouTube(playlist.video_urls[i])
+            ys = yt.streams.get_lowest_resolution()
+            downloadVideos(ys)
+
+    elif(link.startswith("https://www.youtube.com/watch?v=")):
+        #Get youtube videos with highest resolution
+        yt = YouTube(link)
+        ys = yt.streams.get_lowest_resolution()
+        downloadVideos(ys)
+
+i = 0
 
 #Definition for Tkinter
 root = Tk()
