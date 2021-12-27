@@ -11,7 +11,7 @@ def buttonCommand():
 
 def downloadVideos(ys):
     #Get title name of video
-        titleName = ys.title.replace('.', '').replace(',', '').replace(':', '')
+        titleName = ys.title.replace('.', '').replace(',', '').replace(':', '').replace('?', '')
 
         #Add .mp4 to tile name
         newTitleName = titleName + ".mp4"
@@ -42,7 +42,30 @@ def download():
     if(i==1):
         #Change the current directory
         cwd = os.getcwd()
-        os.chdir(cwd + '\..\Downloads\Audio')
+        #cd ..
+        os.chdir(cwd + '\..')
+        #Change the current directory
+        cwd = os.getcwd()
+        #Check if there are folders "Download\Audio"
+        listDir = os.listdir()
+        thereis = False
+        for j in range(0, len(listDir), 1):
+            if(j == (cwd + "\Downloads")):
+                thereis = True
+        #mkdir "Download"
+        if(thereis == False):
+            os.mkdir(cwd + "\Downloads")
+        #cd "Download"
+        os.chdir(cwd + "\Downloads")
+        #Change the current directory
+        cwd = os.getcwd()
+        #mkdir "Audio"
+        if(thereis == False):
+            os.mkdir(cwd + "\Audio")
+        #cd "Audio"
+        os.chdir(cwd + "\Audio")
+        #Change the current directory
+        cwd = os.getcwd()
     
     if(link.startswith("https://www.youtube.com/playlist?list=")):
         playlist = Playlist(link)

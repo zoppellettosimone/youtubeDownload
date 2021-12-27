@@ -3,16 +3,10 @@ from pytube import YouTube
 from pytube import Playlist
 
 def downloadVideos(ys):
-    #Get title name of video
-        titleName = ys.title.replace('.', '').replace(',', '').replace(':', '')
-
-        #Add .mp4 to tile name
-        newTitleName = titleName + ".mp4"
-
         print("Download Video Start")
 
         #Download it in Downloads\Videos
-        ys.download('..\Downloads\Videos')
+        ys.download("Downloads\Videos")
 
 def download():
     link = URL.get()
