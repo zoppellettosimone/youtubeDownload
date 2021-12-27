@@ -6,7 +6,9 @@ def downloadVideos(ys):
         print("Download Video Start")
 
         #Download it in Downloads\Videos
-        ys.download("Downloads\Videos")
+        ys.download("..\Downloads\Videos")
+        
+        print("Download Video Finish")
 
 def download():
     link = URL.get()
