@@ -50,8 +50,9 @@ def download():
         listDir = os.listdir()
         thereis = False
         for j in range(0, len(listDir), 1):
-            if(j == (cwd + "\Downloads")):
+            if((cwd + '\\' + listDir[j]) == (cwd + "\Downloads")):
                 thereis = True
+        print(thereis)
         #mkdir "Download"
         if(thereis == False):
             os.mkdir(cwd + "\Downloads")
