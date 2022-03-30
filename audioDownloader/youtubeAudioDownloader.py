@@ -14,7 +14,8 @@ def buttonCommand():
 def downloadVideos(ys):
     # Get title name of video
     titleName = ys.title.replace('.', '').replace(',', '').replace(
-        ':', '').replace('?', '').replace('"', '').replace('/', '').replace("\\", '')
+        ':', '').replace('?', '').replace('"', '').replace('/', '').replace("\\", '').replace(
+            "~", '').replace(";", '')
 
     # Add .mp4 to tile name
     newTitleName = titleName + ".mp4"
