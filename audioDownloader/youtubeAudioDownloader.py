@@ -64,6 +64,7 @@ def download():
         os.chdir(cwd + "\Downloads")
         # Change the current directory
         cwd = os.getcwd()
+        listDir = os.listdir()
         # if "Downloads" also "Audio" not exist
         if(thereis == False):
             # mkdir "Audio"
@@ -86,14 +87,14 @@ def download():
         print('Number of videos in playlist: %s' % len(playlist.video_urls))
         for i in range(0, len(playlist.video_urls), 1):
             yt = YouTube(playlist.video_urls[i])
-            ys = yt.streams.get_lowest_resolution()
+            ys = yt.streams.get_highest_resolution()
             downloadVideos(ys)
         print("Download End")
 
     elif(link.startswith("https://www.youtube.com/watch?v=")):
         # Get youtube videos with highest resolution
         yt = YouTube(link)
-        ys = yt.streams.get_lowest_resolution()
+        ys = yt.streams.get_highest_resolution()
         downloadVideos(ys)
         print("Download End")
 
