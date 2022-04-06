@@ -1,0 +1,5 @@
+https://kivy.org/doc/stable/gettingstarted/installation.html#
+
+https://www.youtube.com/watch?v=j3HkTVi58Nc
+
+python -m pip install "kivy[base]" kivy_examples

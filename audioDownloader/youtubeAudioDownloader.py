@@ -15,28 +15,30 @@ def downloadVideos(ys):
     # Get title name of video
     titleName = ys.title.replace('.', '').replace(',', '').replace(
         ':', '').replace('?', '').replace('"', '').replace('/', '').replace("\\", '').replace(
-            "~", '').replace(";", '')
+            "~", '').replace(";", '').replace("#", '')
 
     # Add .mp4 to tile name
     newTitleName = titleName + ".mp4"
 
-    print("Download Audio Start")
+    print("\nDownload Audio Start")
 
     # Download it in Downloads\Videos
     ys.download()
 
-    # Trasform mp4 file into mp3 file
-    videoclip = VideoFileClip(newTitleName)
-    audioclip = videoclip.audio
-    audioclip.write_audiofile(titleName + '.mp3')
-    audioclip.close()
-    videoclip.close()
+    try:
+        # Trasform mp4 file into mp3 file
+        videoclip = VideoFileClip(newTitleName)
+        audioclip = videoclip.audio
+        audioclip.write_audiofile(titleName + '.mp3')
+        audioclip.close()
+        videoclip.close()
 
-    # Remove .mp4 original file
-    os.remove(newTitleName)
+        # Remove .mp4 original file
+        os.remove(newTitleName)
 
-    print('Youtube Audio Download Complete in "Downloads\Audio"')
-
+        print('\nYoutube Audio Download Complete in "Downloads\Audio"')
+    except:
+        print(f"\nError with {newTitleName}, check it")
 
 def download():
     global i
@@ -84,7 +86,7 @@ def download():
 
     if(link.startswith("https://www.youtube.com/playlist?list=")):
         playlist = Playlist(link)
-        print('Number of videos in playlist: %s' % len(playlist.video_urls))
+        print('\nNumber of videos in playlist: %s' % len(playlist.video_urls))
         for i in range(0, len(playlist.video_urls), 1):
             yt = YouTube(playlist.video_urls[i])
             ys = yt.streams.get_highest_resolution()
