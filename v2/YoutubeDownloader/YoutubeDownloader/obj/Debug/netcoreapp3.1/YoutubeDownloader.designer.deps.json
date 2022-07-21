@@ -18,6 +18,14 @@
           }
         }
       },
+      "CliWrap/3.4.4": {
+        "runtime": {
+          "lib/netcoreapp3.0/CliWrap.dll": {
+            "assemblyVersion": "3.4.4.0",
+            "fileVersion": "3.4.4.0"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/5.0.0": {},
       "ReaLTaiizor/3.7.8.7": {
         "runtime": {
@@ -66,6 +74,18 @@
             "fileVersion": "6.2.0.0"
           }
         }
+      },
+      "YoutubeExplode.Converter/6.2.0": {
+        "dependencies": {
+          "CliWrap": "3.4.4",
+          "YoutubeExplode": "6.2.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/YoutubeExplode.Converter.dll": {
+            "assemblyVersion": "6.2.0.0",
+            "fileVersion": "6.2.0.0"
+          }
+        }
       }
     }
   },
@@ -76,6 +96,13 @@
       "sha512": "sha512-74haoXINcj4SdMsmiNzk+9VUwIX1U9P61O6AZd5Uao8SGNnJJB8Y/r8VJRc8orn4c7Vk/oURAKSNF9XcSDxbfA==",
       "path": "anglesharp/0.17.0",
       "hashPath": "anglesharp.0.17.0.nupkg.sha512"
+    },
+    "CliWrap/3.4.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+lMDilJviKVrrk1vUFpZNYdEYH3aIrVx1t3DRgSOuSKB0JSzxhx2YREL4hXNIAgcHaMi2rXa6UYj8PXcjJCJpQ==",
+      "path": "cliwrap/3.4.4",
+      "hashPath": "cliwrap.3.4.4.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",
@@ -118,6 +145,13 @@
       "sha512": "sha512-oH5kst4w1QkUwRjJco0alF57JOmFofSGlPkr4OniODB8R6MEyRWn1xFg3JS2wFYd6scZluoXRDhM3/uyUjO9/g==",
       "path": "youtubeexplode/6.2.0",
       "hashPath": "youtubeexplode.6.2.0.nupkg.sha512"
+    },
+    "YoutubeExplode.Converter/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5O8nreCrtU5YnpStTnnBjzUH35K0QqH9HV0PP0bmK1pqlZA+RueP2nyzDG3zpG8/ICuaODGVt92sDeJtwZpUcg==",
+      "path": "youtubeexplode.converter/6.2.0",
+      "hashPath": "youtubeexplode.converter.6.2.0.nupkg.sha512"
     }
   }
 }
